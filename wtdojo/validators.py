@@ -18,27 +18,31 @@ def get_dojo_constraint(field, V):
     #<wtforms.validators.Email object at 0x96a3ecc>
     if 'Required' == validator_type:
         return ('property', 'required=True')
-    elif 'Length' == validator_type:
-
-        if issubclass(field.__class__, dojo_fields.DojoStringField):
-            #x{min,max} will match x between min and max times
-            #x{min,} will match x at least min times
-            #x{,max} will match x at most max times
-            #x{n} will match x exactly n times
-
-            s = ""
-
-            if V.min and V.max:
-                if V.min == V.max:
-                    s = "regExp:'\\\\w{%s}'" % (str(V.min))
-                else:
-                    s = "regExp:'\\\\w{%s,%s}'" % (str(V.min), str(V.max))
-            elif V.max:
-                s = "regExp:'\\\\w{,%s}'" % (str(V.max))
-            elif V.min:
-                s = "regExp:'\\\\w{%,s}'" % (str(V.min))
-
-            return ('dojo_property', s)
+    #elif 'Length' == validator_type:
+    #
+    #    if issubclass(field.__class__, dojo_fields.DojoStringField):
+    #        #x{min,max} will match x between min and max times
+    #        #x{min,} will match x at least min times
+    #        #x{,max} will match x at most max times
+    #        #x{n} will match x exactly n times
+    #
+    #        s = ""
+    #
+    #        #print(V.min)
+    #        if int(V.min) < 0:
+    #            V.min = 0
+    #
+    #        if V.min and V.max:
+    #            if V.min == V.max:
+    #                s = "regExp:'\\\\w{%s}'" % (str(V.min))
+    #            else:
+    #                s = "regExp:'\\\\w{%s,%s}'" % (str(V.min), str(V.max))
+    #        elif V.max:
+    #            s = "regExp:'\\\\w{,%s}'" % (str(V.max))
+    #        elif V.min:
+    #            s = "regExp:'\\\\w{%,s}'" % (str(V.min))
+    #
+    #        return ('dojo_property', s)
 
     else:
         return ('', '')
