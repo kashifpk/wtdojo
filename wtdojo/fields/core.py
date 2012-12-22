@@ -106,6 +106,17 @@ class DojoIntegerField(IntegerField):
         super(DojoIntegerField, self).__init__(label, validators, **kwargs)
 
 
+class DojoDecimalField(DecimalField):
+    """
+    A text field, except all input is coerced to an decimal.  Erroneous input
+    is ignored and will not be accepted as a value.
+    """
+    widget = dojo_widgets.DojoNumberTextBox()
+
+    def __init__(self, label=None, validators=None, places=2, rounding=None, **kwargs):
+        super(DojoDecimalField, self).__init__(label, validators, **kwargs)
+        self.places = places
+        self.rounding = rounding
 
 #class DecimalField(Field):
 #    """
