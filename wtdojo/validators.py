@@ -2,15 +2,13 @@
 Module for translating WTForms validators to Dojo validation constraints
 """
 
-import fields as dojo_fields
-
-
 def get_dojo_constraint(field, V):
     """
     Given a WTForms validator object, returns the dojo contraints string required to implement the same
     validator using Dojo
     """
 
+    #from wtdojo import fields as dojo_fields
     validator_type = V.__class__.__name__
 
     #<wtforms.validators.Required object at 0x96a3c2c>
