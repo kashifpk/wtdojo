@@ -5,6 +5,10 @@ Changes
 
 This document lists the changes as versions progress
 
+Whats new in 0.1.3
+------------------
+
+* Python 3 compatibilty
 
 Whats new in 0.1
 ------------------

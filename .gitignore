@@ -8,4 +8,5 @@ _build
 *.egg-info
 build
 *.bak
+dist
 
