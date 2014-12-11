@@ -1,4 +1,4 @@
-from core import (DojoStringField, DojoDateField, DojoTimeField, DojoIntegerField,
+from .core import (DojoStringField, DojoDateField, DojoTimeField, DojoIntegerField,
                   DojoSelectField, DojoSelectMultipleField, DojoBooleanField,
                   DojoDecimalField)
 
