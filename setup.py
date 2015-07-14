@@ -8,7 +8,7 @@ requires = [
     ]
 
 setup(name='wtdojo',
-      version='0.1.3',
+      version='0.1.5',
       description='Dojo javascript toolkit support for WTForms',
       long_description="""Adds support to display Dojo form fields via WTForms""",
       classifiers=[

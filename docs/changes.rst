@@ -5,6 +5,12 @@ Changes
 
 This document lists the changes as versions progress
 
+Whats new in 0.1.5
+------------------
+
+* New style for the docs
+* Decimal field support
+
 Whats new in 0.1.3
 ------------------
 
