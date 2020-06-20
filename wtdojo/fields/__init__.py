@@ -1,7 +1,7 @@
-from .core import (DojoStringField, DojoDateField, DojoTimeField, DojoIntegerField,
+from .core import (DojoStringField, DojoJSONField, DojoDateField, DojoTimeField, DojoIntegerField,
                   DojoSelectField, DojoSelectMultipleField, DojoBooleanField,
                   DojoDecimalField)
 
-__all__ = ['DojoStringField', 'DojoDateField', 'DojoTimeField', 'DojoIntegerField',
+__all__ = ['DojoStringField', 'DojoJSONField', 'DojoDateField', 'DojoTimeField', 'DojoIntegerField',
            'DojoSelectField', 'DojoSelectMultipleField', 'DojoBooleanField',
            'DojoDecimalField']

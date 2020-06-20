@@ -1,3 +1,4 @@
+import json
 from datetime import date, datetime, time
 from .. import widgets as dojo_widgets
 from wtforms import widgets as wt_widgets
@@ -8,10 +9,35 @@ from wtforms.fields import (Field, StringField, TextField, TextAreaField, Boolea
                             SubmitField, Flags)
 
 __all__ = (
-    'DojoStringField', 'DojoDateField', 'DojoTimeField', 'DojoIntegerField',
+    'DojoStringField', 'DojoJSONField', 'DojoDateField', 'DojoTimeField', 'DojoIntegerField',
     'DojoSelectField', 'DojoSelectMultipleField', 'DojoBooleanField'
 )
 
+class JSONField(Field):
+    """
+    A text field, except all input is coerced to an JSON.  Erroneous input
+    is ignored and will not be accepted as a value.
+    """
+    widget = wt_widgets.TextInput()
+
+    def __init__(self, label=None, validators=None, **kwargs):
+        super(JSONField, self).__init__(label, validators, **kwargs)
+
+    def _value(self):
+        if self.raw_data:
+            return json.dumps(self.raw_data[0])
+        elif self.data is not None:
+            return json.dumps(self.data)
+        else:
+            return ''
+
+    def process_formdata(self, valuelist):
+        if valuelist:
+            try:
+                self.data = json.loads(valuelist[0])
+            except ValueError:
+                self.data = None
+                raise ValueError(self.gettext('Not a valid JSON value'))
 
 class DojoStringField(StringField):
     """
@@ -20,6 +46,13 @@ class DojoStringField(StringField):
     """
     widget = dojo_widgets.DojoValidationTextBox()
 
+
+class DojoJSONField(JSONField):
+    """
+    Text field/area that displays and returns JSON.
+    """
+    widget = dojo_widgets.DojoValidationTextBox()
+    
 
 class DojoBooleanField(BooleanField):
     """
